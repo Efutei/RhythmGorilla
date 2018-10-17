@@ -25,22 +25,20 @@ phina.define('Can',{
   doAction: function(dec){
     if(dec){
       this.setImage('gomi', 100, 100);
-      sound_bomb.cloneNode().play();
     }
   }
 });
-
+  
 // 本社クラスを定義
 phina.define('Honsha',{
   superClass: 'Notes',
-  init: function(self, position_x, position_y){
+  init: function(position_x, position_y){
     this.superInit('bom');
     this.x = position_x;
     this.y = position_y;
     // スプライト画像作成
-    this.sprite = Sprite('explosion').addChildTo(self.explosionLayer);
+    this.sprite = Sprite('explosion').addChildTo(this);
     var sprite = this.sprite;
-    this.sprite.setPosition(this.x, this.y);
     sprite.alpha = 0; // スプライトを透明に
     // スプライトにフレームアニメーションをアタッチ
     this.anim = FrameAnimation('explosion_ss').attachTo(sprite);
@@ -51,9 +49,8 @@ phina.define('Honsha',{
     var sprite = this.sprite;
     if(dec){
       sprite.alpha = 1; // スプライトシートを可視化
-      sprite.setPosition(this.x, this.y).setScale(8.0, 8.0);
+      sprite.setPosition(sprite.x, sprite.y).setScale(8.0, 8.0);
       fire.gotoAndPlay('explosion'); // 爆破！ｗ
-      sound_bomb.cloneNode().play();
     }
   },
   update: function() {
@@ -65,3 +62,4 @@ phina.define('Honsha',{
     }
   },
 });
+  

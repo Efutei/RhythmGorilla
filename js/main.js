@@ -1,18 +1,14 @@
 var ASSETS = {
   image: {
     gorilla_title: './img/character_gorilla_hardboiled.png',
-    gorilla_default1: './img/gorilla/gori_default.png',
-    gorilla_default2: './img/gorilla/gori_default.png',
-    gorilla_armup: './img/gorilla/gori_armup.png',
-    gorilla_armdown: './img/gorilla/gori_armdown.png',
-    arm_swingdown: './img/gorilla/arm_swingdown.png',
-    fist: './img/gorilla/fist.png',
+    gorilla_default1: './img/gorilla/protogori_default1.png',
+    gorilla_default2: './img/gorilla/protogori_default2.png',
+    gorilla_armup: './img/gorilla/protogori_armup.png',
+    gorilla_armdown: './img/gorilla/protogori_armdown.png',
     bom: './img/bom.png',
     explosion: './img/explosion.png',
     can: './img/can.png',
     gomi: './img/gomi.png',
-    background: './img/background.png',
-    conveyor: './img/conveyor.png'
   },
   spritesheet: {
     "explosion_ss":
@@ -38,7 +34,7 @@ var ASSETS = {
 
 var SCREEN_WIDTH = 640;
 var SCREEN_HEIGHT = 380;
-var sound_bomb,sound_swing;
+
 (async _ => {
 
   // phina.js をグローバル領域に展開
@@ -57,8 +53,6 @@ var sound_bomb,sound_swing;
   ]);
   await splitter.prefix("./score/");
   await splitter.load("score1.js");
-  sound_bomb = await mediaLoader.loadAudio('./sounds/bomb.mp3');
-  sound_swing = await mediaLoader.loadAudio('./sounds/karaburi.mp3');
 
   // メイン処理
   phina.main(function () {
